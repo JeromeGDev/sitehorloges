@@ -2,15 +2,18 @@
     include_once __DIR__. DIRECTORY_SEPARATOR .'functions'. DIRECTORY_SEPARATOR .'environnement.php';
 	include_once __DIR__. DIRECTORY_SEPARATOR .'functions'. DIRECTORY_SEPARATOR .'functions.php';
 
-    var_dump('SESSION');
-    var_dump($_SESSION);
-    var_dump('POST');
-    var_dump($_POST);
-    var_dump('FILES');
-    var_dump($_FILES);
+    //var_dump('SESSION');
+    //var_dump($_SESSION);
+    //var_dump('POST');
+    //var_dump($_POST);
+    //var_dump('FILES');
+    //var_dump($_FILES);
     //exit();
     //REQUETE SELECT POUR REMPLISSAGE AUTO
     $userId = htmlspecialchars($_GET['id']);
+
+    $requestRoles = $bdd->query('SELECT * FROM roles' );
+
 
     $rqSelect = $bdd->prepare('SELECT *
                                 FROM users
@@ -118,6 +121,19 @@
 
                 <form action="user_modify.php<?= '?id=' . $userId ?>" method="POST" enctype="multipart/form-data">
                     <?php foreach ($values as $value) : ?>
+
+                    <?php if ($sessionUserRole === 'superadmin') : ?>
+                        <div class="inputGroup">
+                            <h5><span>ROLE ACTUEL DE L'UTILISATEUR : </span><strong><?= $value['user_role'] ;?></strong></h5>
+                            <label for="userNewRole">Modifier des droits admin :  : </label>
+                            <select name="userNewRole" id="userNewRole">
+                                <?php while($role = $requestRoles->fetch()) : ?>
+                                <option value="<?= $role['role_name'] ?>"><?= $role['role_name'] ?></option>
+                                <?php endwhile ;?>
+                            </select>
+                        </div>
+                    <?php endif ; ?>
+
                     <div class="inputGroup">
                         <label for="userLastName">Nom d'utilisateur</label>
                         <input type="text" required name="userLastName" id="userLastName" value="<?= $value['user_lastname'] ?>">

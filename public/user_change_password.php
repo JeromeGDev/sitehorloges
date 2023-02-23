@@ -16,12 +16,13 @@
 
     //FOREACH PERMET DE BOUCLER SUR LE TABLEAU VALUES
     foreach ($values as $value) {
-        //ON VERIFIE SI LE USER EST LE CREATEUR OU L'ADMIN
-        // if(
-        //     isset($sessionUserRole) && isset($sessionUserName)  
-        //     && (($sessionUserRole === 'admin') || ($sessionUserRole === 'superadmin')) 
-        //     && (($sessionUserName == $value['user_pseudo']) || ($sessionUserName == $value['user_mail']))
-        // ){
+        //dda([$_SESSION],$value['user_lastname']);
+        //ON VERIFIE SI LE USER EST LE CREATEUR OU L'ADMIN ET QUE CELUI QUI CHANGE LE PASSWORD ET L'UTILISATEUR
+        if(
+            isset($sessionUserRole) && isset($sessionUserName)  
+            && (($sessionUserRole === 'admin') || ($sessionUserRole === 'superadmin')) 
+            && (($sessionUserName == $value['user_pseudo']) || ($sessionUserName == $value['user_lastname']))
+        ){
             if (isset($_POST['oldPsd']) && isset($_POST['newPsd']) && isset($_POST['newPsdConfirm'])){
                 $oldPsd = htmlspecialchars(trim($_POST['oldPsd']));
                 $oldPsdBdd = $value['user_password'];
@@ -49,10 +50,10 @@
                 }                    
             }
 
-        } //else {
-            //header("Location:user_modify.php?id=$userId&accessallowed=0");
-        //}
-    //}
+        } else {
+            header("Location:user_modify.php?id=$userId&accessallowed=0");
+        }
+    }
 ?>
     <?php
         include_once('elements/header.php');

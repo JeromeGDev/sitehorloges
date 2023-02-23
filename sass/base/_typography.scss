@@ -1,0 +1,48 @@
+
+h1{
+    font-family:$fonth1;
+}
+h2, h3{
+    font-family:$fonth2;
+}
+h4, h5, h6{
+    font-family:$fonth6;
+}
+
+p{
+    font-family:$fontp;
+}
+
+blockquote{
+    font-family:$fontblockquote;
+}
+
+cite,legend{
+    font-family:$fontlegend;
+}
+label,input,select{
+    font-family:$fontlabelInputSelect;
+}
+meta{
+    font-family:$fontmeta;
+}
+
+.meta{
+    font-family:$fontmeta;
+}
+
+pre{
+    font-family:$fontpre ;
+}
+
+pre.secial{
+    font-family:$fontpre2 ;
+}
+
+nav ul li{
+    font-family:$fontnav;
+    &:hover{
+        font-family:$fontnavHvr;
+    }
+
+}

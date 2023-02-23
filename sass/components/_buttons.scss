@@ -1,0 +1,228 @@
+@use 'sass:math';
+@use 'sass:color';
+
+/* Boutons classiques */
+
+.btn{
+    display:flex;
+    flex-wrap:nowrap;
+    justify-content:center;
+    align-items:center;
+    align-content:center;
+    width:350px;
+    aspect-ratio: 350/100;
+    padding:1rem 2rem .8rem 2rem;
+    margin:auto;
+    &--alert{
+        color:#fff;
+        background-color:#ed0000;
+        &:hover{
+            color:#fff;
+            background-color:#810202;      
+        }
+    }
+    &--success{
+        color:#fff;
+        background-color:#81ca57;
+        &:hover{
+            color:#fff;
+            background-color:#466d2f;
+        }
+    }
+    &--danger{
+        color:#fff;
+        background-color:#f09621;
+        &:hover{
+            color:#fff;
+            background-color:#915a14;
+        }
+    }
+    &--sun{
+        color:#fff;
+        background-color:#f1bd2c;
+        &:hover{
+            color:#fff;
+            background-color:#7e6216;
+        }
+    }
+    &--gold{
+        color:#000;
+        background-color:#c7a71b;
+        &:hover{
+            color:#fff;
+            background-color:#5a4c0b;
+        }
+    }
+    &--silver{
+        color:#fff;
+        background-color:#a7afae;
+        &:hover{
+            color:#fff;
+            background-color:#4c5251;
+        }
+    }
+    &--lightblue{
+        color:#fff;
+        background-color:#11c3e2;
+        &:hover{
+            color:#fff;
+            background-color:#075968;
+        }
+    }
+    &--middleblue{
+        color:#fff;
+        background-color:#2083f5;
+        &:hover{
+            color:#fff;
+            background-color:#0d3869;
+        }
+    }
+    &--nightblue{
+        color:#fff;
+        background-color:#071561;
+        &:hover{
+            color:#fff;
+            background-color:#112bbd;
+        }
+    }
+    &--girondinsblue{
+        color:#fff;
+        background-color:#090f33;
+        &:hover{
+            color:#fff;
+            background-color:#b60fb6;;
+        }
+    }
+    &--girondinspink{
+        color:#fff;
+        background-color:#b60fb6;
+        &:hover{
+            color:#fff;
+            background-color:#090f33;
+        }
+    }
+    &--colvert{
+        color:#fff;
+        background-color:#12b9a3;
+        &:hover{
+            color:#fff;
+            background-color:#085e52;
+        }
+    }
+}
+
+/* ============================= Bouton Burger =============================  */
+
+.btnBurger{
+    display: flex;
+    width:$burgerSize;
+    height:$burgerSize;
+    justify-content: center;
+    align-content: space-between;
+    position:relative;
+    margin:auto;
+    transition:all 150ms ease-in-out;
+    &:hover{
+        cursor: pointer;
+        transform:scale($scaleHover);
+    }
+    &:hover > &__Top{
+        transform: rotate(-45deg) translateY(.25rem);
+        // border-radius: 50px;
+        border-top-left-radius:0 ;
+        border-bottom-left-radius:0 ;
+    }
+    &:hover > &__Middle{
+    display: none;
+    }
+    &:hover > &__Bottom{
+        transform: rotate(45deg) translateY(-.25rem);
+        // border-radius: 50px;
+        border-top-left-radius:0 ;
+        border-bottom-left-radius:0 ;
+    }
+    &__Top{
+        display:inline-flex;
+        top:0;
+        background-color: $burgerColor;
+        width: $burgerSize;
+        height: .2rem;
+        position:absolute;
+        transition:all 150ms ease-in-out;
+        border-radius: 50px;
+    }
+    &__Middle{
+        display:inline-flex;
+        top:50%;
+        transform:translateY(-50%);
+        background-color: $burgerColor;
+        width: $burgerSize;
+        height: .2rem;
+        position:absolute;
+        transition:all 150ms ease-in-out;
+        border-radius: 50px;
+
+    }
+    &__Bottom{
+        display:inline-flex;
+        bottom:0;
+        background-color: $burgerColor;
+        width: $burgerSize;
+        height: .2rem;
+        position:absolute;
+        transition:all 150ms ease-in-out;
+        border-radius: 50px;
+    }
+} 
+
+/* ============================= Bouton closeCross =============================  */
+
+.btnClose{
+    display: flex;
+    width:$crossCloserSize;
+    height:$crossCloserSize;
+    justify-content: center;
+    align-content: space-between;
+    position:relative;
+    margin:2rem auto;
+    transition:all 150ms ease-in-out;
+    background-color: blue; // Pour test uniquement
+    &:hover{
+        cursor: pointer;
+        transform: scale($crossCloserScaleHover);
+    }
+    &__firstBar{
+        display:inline-flex;
+        top:50%;
+        background-color: $crossCloserColor;
+        width: 100%;
+        height: .2rem;
+        position:absolute;
+        transition:all 150ms ease-in-out;
+        border-radius: 50px;
+        transform: rotate(-45deg) translateY(-25%);
+
+    }
+    &:hover > &__firstBar{
+        transform: rotate(-360deg);
+
+    }
+    &:hover > &__secondBar{
+        transform: rotate(360deg);
+    }
+    &__secondBar{
+        display:inline-flex;
+        top:50%;
+        background-color: $crossCloserColor;
+        width: 100%;
+        height: .2rem;
+        position:absolute;
+        transition:all 150ms ease-in-out;
+        border-radius: 50px;
+        transform: rotate(45deg) translateY(25%);
+
+    }
+
+}
+
+

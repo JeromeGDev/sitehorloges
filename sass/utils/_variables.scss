@@ -1,0 +1,50 @@
+@use 'sass:math';
+@use 'sass:color';
+
+/* Font Awesome */
+//chhemin d'accès relatif FontAwesome icones
+$fa-font-path:"../../assets/fontawesome/webfonts";
+
+/* taille des boutons */
+
+$btnWidth : 400px;
+$btnHeight: 150px;
+
+/* ============================= Bouton Burger =============================  */
+$burgerSize : 1.5rem;
+$scaleHover : 1.1;
+$burgerColor : #e4e4e4;
+
+/* ============================= Bouton Burger =============================  */
+
+$crossCloserSize : 1.5rem;
+$crossCloserScaleHover : 1.1;
+$crossCloserColor : #e4e4e4;
+
+/* ============================= Boutons isolés =============================  */
+// pour la mixin flexBtn
+$wide : 250px;
+$aspectRatio : 250/90;
+
+
+/* ============================= Boutons isolés =============================  */
+$primaryClr : ;
+$primaryClrHvr : lighten($primaryClr, 20%);
+$primaryClrActive :darken($primaryClr, 20%) ;
+
+$secondaryClr : ;
+$secondaryClrHvr : lighten($secondaryClr, 20%);
+$secondaryClrActive :darken($secondaryClr, 20%) ;
+
+$thirdClr : ;
+$thirdClrHvr : lighten($thirdClr, 20%);
+$thirdClrActive :darken($thirdClr, 20%) ;
+
+$fourthClr : ;
+$fourthClrHvr : lighten($fourthClr, 20%);
+$fourthClrActive :darken($fourthClr, 20%) ;
+
+$fifthClr : ;
+$fifthClrHvr : lighten($fifthClr, 20%);
+$fifthClrActive :darken($fifthClr, 20%) ;
+

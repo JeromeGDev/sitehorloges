@@ -1,0 +1,17 @@
+@use 'sass:math';
+@use 'sass:color';
+
+// @mixin bouton($wide:$btnWidth,$hightness:$btnHeigh){
+//     width: $wide;
+//     height: $hightness;
+// }
+
+@mixin flexBtn($wide,$aspectpRatio){
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    width: $wide;
+    aspect-ratio: $aspectRatio;
+
+}
+

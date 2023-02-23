@@ -1,0 +1,14 @@
+@use 'sass:math';
+@use 'sass:color';
+
+.displayNone{
+    display: none;
+}
+
+.translateXBack100{
+    transform: translateX(-100%);
+}
+
+.listNone{
+    list-style: none;
+}

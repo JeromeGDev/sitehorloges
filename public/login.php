@@ -42,15 +42,19 @@
 <script>alert('Erreur : champ non rempli') </script>
 <?php endif ;?>
 <?php if(!isset($_SESSION['userId'])) :?>
-<form action="login.php" method="POST">
-    <inputGroup>
-        <label for="userId">Identifiant de connexion</label>
-        <input type="text" name="useridsForm" id="useridsForm">
-        <label for="userPassword"></label>
-        <input type="password" name="userPassword" id="userPassword">
-    </inputGroup>
-    <button type="submit">SE CONNECTER</button>
-</form>
+<div class="formBlocksContainer">
+    <div class="formBlocksContainer__formBlock">
+        <form class="formBlocksContainer__formBlock__form" action="login.php" method="POST">
+            <div  class="formBlocksContainer__formBlock__form__inputGroup">
+                <label for="userId">Identifiant de connexion</label>
+                <input type="text" name="useridsForm" id="useridsForm">
+                <label for="userPassword"></label>
+                <input type="password" name="userPassword" id="userPassword">
+            </div>
+            <button type="submit">SE CONNECTER</button>
+        </form>
+    </div>
+</div>
 <?php else :?>
 <h2>Vous êtes déjà connecté</h2>
 <?php endif ;?>

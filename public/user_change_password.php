@@ -59,34 +59,33 @@
         include_once('elements/header.php');
     ?>
     <?php //if (isset($sessionUserName)){ ?>
+    <div class="formBlocksContainer">
         <h1>Modification de la fiche utilisateur</h1>
         <h2>Formulaire de modification du mot de passe</h2>
-        <div class="formBlocks">
-            <div class="formBlock">
-                <h3>Merci de remplir tous les champs du formulaire</h3>
-                <form action="user_change_password.php<?= '?id=' . $userId ?>" method="POST">
+        <div class="formBlocksContainer__formBlock">
+            <h3>Merci de remplir tous les champs du formulaire</h3>
+            <form class="formBlocksContainer__formBlock__form" action="user_change_password.php<?= '?id=' . $userId ?>" method="POST">
 
-                    <div class="inputGroup">
-                        <label for="oldPsd">Ancien Mot de passe</label>
-                        <input type="password" name="oldPsd" id="oldPsd">
-                    </div>
+                <div class="formBlocksContainer__formBlock__form__inputGroup">
+                    <label for="oldPsd">Ancien Mot de passe</label>
+                    <input type="password" name="oldPsd" id="oldPsd">
+                </div>
 
-                    <div class="inputGroup">
-                        <label for="newPsd">Nouveau Mot de passe</label>
-                        <input type="password" name="newPsd" id="newPsd">
-                    </div>
+                <div class="formBlocksContainer__formBlock__form__inputGroup">
+                    <label for="newPsd">Nouveau Mot de passe</label>
+                    <input type="password" name="newPsd" id="newPsd">
+                </div>
 
-                    <div class="inputGroup">
-                        <label for="newPsdConfirm">Confirmation du nouveau Mot de passe</label>
-                        <input type="password" name="newPsdConfirm" id="newPsdConfirm">
-                    </div>
-                    
-                    <button class="connectBtn" >Valider TOUTES les modifications</button> 
-
-                </form>
+                <div class="formBlocksContainer__formBlock__form__inputGroup">
+                    <label for="newPsdConfirm">Confirmation du nouveau Mot de passe</label>
+                    <input type="password" name="newPsdConfirm" id="newPsdConfirm">
+                </div>
                 
-            </div>
+                <button class="connectBtn" >Valider TOUTES les modifications</button> 
+
+            </form>
         </div>
+    </div>
     <?php //endif ; ?>
 
     <?php

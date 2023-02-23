@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /*!
  * Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com
  * License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
@@ -233,14 +234,14 @@
 
 @media (prefers-reduced-motion: reduce) {
   .fa-beat,
-.fa-bounce,
-.fa-fade,
-.fa-beat-fade,
-.fa-flip,
-.fa-pulse,
-.fa-shake,
-.fa-spin,
-.fa-spin-pulse {
+  .fa-bounce,
+  .fa-fade,
+  .fa-beat-fade,
+  .fa-flip,
+  .fa-pulse,
+  .fa-shake,
+  .fa-spin,
+  .fa-spin-pulse {
     animation-delay: -1ms;
     animation-duration: 1ms;
     animation-iteration-count: 1;
@@ -8216,7 +8217,46 @@ readers do not read off random characters that represent icons */
 }
 
 /* Font Awesome */
-/* Inistructions basiques d'initialisation */
+/* taille des boutons */
+/* ============================= Bouton Burger =============================  */
+/* ============================= Bouton Burger =============================  */
+/* ============================= Boutons isolés =============================  */
+/* ============================= Boutons isolés =============================  */
+@keyframes spinner {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes autoCloseMenuStart {
+  0% {
+    transform: translateX(0%);
+  }
+  25% {
+    transform: translateX(3%);
+  }
+  50% {
+    transform: translateX(3%);
+  }
+  100% {
+    transform: translateX(-103%);
+  }
+}
+.displayNone {
+  display: none;
+}
+
+.translateXBack100 {
+  transform: translateX(-100%);
+}
+
+.listNone {
+  list-style: none;
+}
+
+/* Instructions basiques d'initialisation */
 * {
   padding: 0;
   margin: 0;
@@ -8225,11 +8265,607 @@ readers do not read off random characters that represent icons */
 
 body {
   font-size: 16px;
+  background-color: #f6f8fb;
 }
 
 html, body {
   height: 100%;
   width: 100%;
+  max-width: 100vw;
+  font-family: sans-serif;
+}
+
+/* Font : forgotten futurist -> Police graphique pour titre principal */
+@font-face {
+  font-family: "abnesregular";
+  src: url("/assets/fonts/abnes-webfont.woff2") format("woff2"), url("/assets/fonts/abnes-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+/* Font : continuum -> Police graphique pour titres */
+@font-face {
+  font-family: "Continuum";
+  src: url("/assets/fonts/continuum_medium-webfont.woff2") format("woff2"), url("/assets/fonts/continuum_medium-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+/* Font : GoodTimes -> Police graphique pour titres */
+@font-face {
+  font-family: "Goodtimes";
+  src: url("/assets/fonts/goodtime-webfont.woff2") format("woff2"), url("/assets/fonts/goodtime-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+/* Font : ubuntu -> Police de textes */
+@font-face {
+  font-family: "ubuntubold";
+  src: url("/assets/fonts/ubuntu-b-webfont.woff2") format("woff2"), url("/assets/fonts/ubuntu-b-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "ubuntubold_italic";
+  src: url("/assets/fonts/ubuntu-bi-webfont.woff2") format("woff2"), url("/assets/fonts/ubuntu-bi-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "ubuntu_condensedregular";
+  src: url("/assets/fonts/ubuntu-c-webfont.woff2") format("woff2"), url("/assets/fonts/ubuntu-c-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "ubuntulight";
+  src: url("/assets/fonts/ubuntu-l-webfont.woff2") format("woff2"), url("/assets/fonts/ubuntu-l-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "ubuntulight_italic";
+  src: url("/assets/fonts/ubuntu-li-webfont.woff2") format("woff2"), url("/assets/fonts/ubuntu-li-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "ubuntumedium";
+  src: url("/assets/fonts/ubuntu-m-webfont.woff2") format("woff2"), url("/assets/fonts/ubuntu-m-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "ubuntumedium_italic";
+  src: url("/assets/fonts/ubuntu-mi-webfont.woff2") format("woff2"), url("/assets/fonts/ubuntu-mi-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "ubunturegular";
+  src: url("/assets/fonts/ubuntu-r-webfont.woff2") format("woff2"), url("/assets/fonts/ubuntu-r-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "ubuntuitalic";
+  src: url("/assets/fonts/ubuntu-ri-webfont.woff2") format("woff2"), url("/assets/fonts/ubuntu-ri-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+/* Font : oxanium -> Police de textes - police "carrée */
+@font-face {
+  font-family: "oxaniumbold";
+  src: url("/assets/fonts/oxanium-bold-webfont.woff2") format("woff2"), url("/assets/fonts/oxanium-bold-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "oxaniumextrabold";
+  src: url("/assets/fonts/oxanium-extrabold-webfont.woff2") format("woff2"), url("/assets/fonts/oxanium-extrabold-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "oxaniumextralight";
+  src: url("/assets/fonts/oxanium-extralight-webfont.woff2") format("woff2"), url("/assets/fonts/oxanium-extralight-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "oxaniumlight";
+  src: url("/assets/fonts/oxanium-light-webfont.woff2") format("woff2"), url("/assets/fonts/oxanium-light-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "oxaniummedium";
+  src: url("/assets/fonts/oxanium-medium-webfont.woff2") format("woff2"), url("/assets/fonts/oxanium-medium-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "oxaniumregular";
+  src: url("/assets/fonts/oxanium-regular-webfont.woff2") format("woff2"), url("/assets/fonts/oxanium-regular-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "oxaniumsemibold";
+  src: url("/assets/fonts/oxanium-semibold-webfont.woff2") format("woff2"), url("/assets/fonts/oxanium-semibold-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+/* Font : glacial -> Police de textes - agréable à lire */
+@font-face {
+  font-family: "Glacial_bold";
+  src: url("/assets/fonts/glacialindifference-bold-webfont.woff2") format("woff2"), url("/assets/fonts/glacialindifference-bold-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Glacial_italic";
+  src: url("/assets/fonts/glacialindifference-italic-webfont.woff2") format("woff2"), url("/assets/fonts/glacialindifference-italic-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Glacial_regular";
+  src: url("/assets/fonts/glacialindifference-regular-webfont.woff2") format("woff2"), url("/assets/fonts/glacialindifference-regular-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+/* Font : droid -> Police de code */
+@font-face {
+  font-family: "Droid";
+  src: url("/assets/fonts/DroidSansMono-webfont.eot");
+  src: url("/assets/fonts/DroidSansMono-webfont.eot?#iefix") format("embedded-opentype"), url("/assets/fonts/DroidSansMono-webfont.woff2") format("woff2"), url("/assets/fonts/DroidSansMono-webfont.woff") format("woff"), url("/assets/fonts/DroidSansMono-webfont.ttf") format("truetype"), url("/assets/fonts/DroidSansMono-webfont.svg#droid_sans_monoregular") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+/* Font : courrier -> Police de code */
+@font-face {
+  font-family: "courier_newregular";
+  src: url("/assets/fonts/cour-webfont.woff2") format("woff2"), url("/assets/fonts/cour-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "courier_newbold";
+  src: url("/assets/fonts/courbd-webfont.woff2") format("woff2"), url("/assets/fonts/courbd-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "courier_newbold_italic";
+  src: url("/assets/fonts/courbi-webfont.woff2") format("woff2"), url("/assets/fonts/courbi-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "courier_newitalic";
+  src: url("/assets/fonts/couri-webfont.woff2") format("woff2"), url("/assets/fonts/couri-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "courier_primeregular";
+  src: url("/assets/fonts/courier_prime-webfont.woff2") format("woff2"), url("/assets/fonts/courier_prime-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "courier_primebold";
+  src: url("/assets/fonts/courier_prime_bold-webfont.woff2") format("woff2"), url("/assets/fonts/courier_prime_bold-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "courier_primebold_italic";
+  src: url("/assets/fonts/courier_prime_bold_italic-webfont.woff2") format("woff2"), url("/assets/fonts/courier_prime_bold_italic-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "courier_primeitalic";
+  src: url("/assets/fonts/courier_prime_italic-webfont.woff2") format("woff2"), url("/assets/fonts/courier_prime_italic-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+/* Boutons classiques */
+.btn {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  width: 350px;
+  aspect-ratio: 350/100;
+  padding: 1rem 2rem 0.8rem 2rem;
+  margin: auto;
+}
+.btn--alert {
+  color: #fff;
+  background-color: #ed0000;
+}
+.btn--alert:hover {
+  color: #fff;
+  background-color: #810202;
+}
+.btn--success {
+  color: #fff;
+  background-color: #81ca57;
+}
+.btn--success:hover {
+  color: #fff;
+  background-color: #466d2f;
+}
+.btn--danger {
+  color: #fff;
+  background-color: #f09621;
+}
+.btn--danger:hover {
+  color: #fff;
+  background-color: #915a14;
+}
+.btn--sun {
+  color: #fff;
+  background-color: #f1bd2c;
+}
+.btn--sun:hover {
+  color: #fff;
+  background-color: #7e6216;
+}
+.btn--gold {
+  color: #000;
+  background-color: #c7a71b;
+}
+.btn--gold:hover {
+  color: #fff;
+  background-color: #5a4c0b;
+}
+.btn--silver {
+  color: #fff;
+  background-color: #a7afae;
+}
+.btn--silver:hover {
+  color: #fff;
+  background-color: #4c5251;
+}
+.btn--lightblue {
+  color: #fff;
+  background-color: #11c3e2;
+}
+.btn--lightblue:hover {
+  color: #fff;
+  background-color: #075968;
+}
+.btn--middleblue {
+  color: #fff;
+  background-color: #2083f5;
+}
+.btn--middleblue:hover {
+  color: #fff;
+  background-color: #0d3869;
+}
+.btn--nightblue {
+  color: #fff;
+  background-color: #071561;
+}
+.btn--nightblue:hover {
+  color: #fff;
+  background-color: #112bbd;
+}
+.btn--girondinsblue {
+  color: #fff;
+  background-color: #090f33;
+}
+.btn--girondinsblue:hover {
+  color: #fff;
+  background-color: #b60fb6;
+}
+.btn--girondinspink {
+  color: #fff;
+  background-color: #b60fb6;
+}
+.btn--girondinspink:hover {
+  color: #fff;
+  background-color: #090f33;
+}
+.btn--colvert {
+  color: #fff;
+  background-color: #12b9a3;
+}
+.btn--colvert:hover {
+  color: #fff;
+  background-color: #085e52;
+}
+
+/* ============================= Bouton Burger =============================  */
+.btnBurger {
+  display: flex;
+  width: 1.5rem;
+  height: 1.5rem;
+  justify-content: center;
+  align-content: space-between;
+  position: relative;
+  margin: auto;
+  transition: all 150ms ease-in-out;
+}
+.btnBurger:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+}
+.btnBurger:hover > .btnBurger__Top {
+  transform: rotate(-45deg) translateY(0.25rem);
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.btnBurger:hover > .btnBurger__Middle {
+  display: none;
+}
+.btnBurger:hover > .btnBurger__Bottom {
+  transform: rotate(45deg) translateY(-0.25rem);
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.btnBurger__Top {
+  display: inline-flex;
+  top: 0;
+  background-color: #e4e4e4;
+  width: 1.5rem;
+  height: 0.2rem;
+  position: absolute;
+  transition: all 150ms ease-in-out;
+  border-radius: 50px;
+}
+.btnBurger__Middle {
+  display: inline-flex;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #e4e4e4;
+  width: 1.5rem;
+  height: 0.2rem;
+  position: absolute;
+  transition: all 150ms ease-in-out;
+  border-radius: 50px;
+}
+.btnBurger__Bottom {
+  display: inline-flex;
+  bottom: 0;
+  background-color: #e4e4e4;
+  width: 1.5rem;
+  height: 0.2rem;
+  position: absolute;
+  transition: all 150ms ease-in-out;
+  border-radius: 50px;
+}
+
+/* ============================= Bouton closeCross =============================  */
+.btnClose {
+  display: flex;
+  width: 1.5rem;
+  height: 1.5rem;
+  justify-content: center;
+  align-content: space-between;
+  position: relative;
+  margin: 2rem auto;
+  transition: all 150ms ease-in-out;
+  background-color: blue;
+}
+.btnClose:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+}
+.btnClose__firstBar {
+  display: inline-flex;
+  top: 50%;
+  background-color: #e4e4e4;
+  width: 100%;
+  height: 0.2rem;
+  position: absolute;
+  transition: all 150ms ease-in-out;
+  border-radius: 50px;
+  transform: rotate(-45deg) translateY(-25%);
+}
+.btnClose:hover > .btnClose__firstBar {
+  transform: rotate(-360deg);
+}
+.btnClose:hover > .btnClose__secondBar {
+  transform: rotate(360deg);
+}
+.btnClose__secondBar {
+  display: inline-flex;
+  top: 50%;
+  background-color: #e4e4e4;
+  width: 100%;
+  height: 0.2rem;
+  position: absolute;
+  transition: all 150ms ease-in-out;
+  border-radius: 50px;
+  transform: rotate(45deg) translateY(25%);
+}
+
+.hTop {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  max-width: 90%;
+  margin: auto;
+}
+.hTop a {
+  padding: 0.4rem 0.8rem;
+  background-color: #726c6f;
+  min-width: 20%;
+  border-left: thin solid #1c2b3d;
+  border-right: thin solid #1c2b3d;
+  color: #fff;
+  font-size: 0.6rem;
+  font-weight: 100;
+}
+.hTop a:hover {
+  cursor: pointer;
+  background-color: #1c2b3d;
+  color: #fff;
+  box-shadow: inset 0 0 5px rgb(0, 0, 0);
+}
+
+.tblList {
+  width: 100%;
+  border: thin solid #726c6f;
+  border-radius: 5px;
+}
+.tblList__header__row__box {
+  border: thin solid #726c6f;
+  background-color: white;
+  padding: 0.5rem;
+}
+.tblList__header__row__box:first-child {
+  border-top-left-radius: 5px;
+}
+.tblList__header__row__box:last-child {
+  border-top-right-radius: 5px;
+}
+.tblList__content__row__box {
+  border: thin solid #726c6f;
+  background-color: #726c6f;
+  padding: 0.5rem;
+  color: white;
+}
+.tblList__content__row__box:first-child {
+  border-top-left-radius: 5px;
+}
+.tblList__content__row__box:last-child {
+  border-top-right-radius: 5px;
+  text-align: center;
+}
+.tblList__content__row__box:last-child a {
+  color: #726c6f;
+  background-color: white;
+  padding: 0.3rem 0.5rem;
+  border-radius: 3px;
+  border: thin solid white;
+}
+.tblList__content__row__box:last-child a:hover {
+  cursor: pointer;
+  background-color: #726c6f;
+  color: white;
+  border: thin solid white;
+  box-shadow: 0 0 5px white;
+}
+
+.mainSheetContainer {
+  width: 100%;
+  padding: 1rem;
+  gap: 1rem;
+}
+.mainSheetContainer h1 {
+  color: #fff;
+  background-color: #6c6f72;
+  padding: 0.5rem;
+}
+.mainSheetContainer__child {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.mainSheetContainer__child__articleContainer {
+  display: flex;
+  gap: 1rem;
+  background-color: #3d2e1c;
+}
+.mainSheetContainer__child__articleContainer__imgC {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  width: 400px;
+  height: 400px;
+}
+.mainSheetContainer__child__articleContainer__imgC img {
+  border: 2px solid #000;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3137254902);
+}
+.mainSheetContainer__child__articleContainer__block {
+  gap: 1rem;
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem;
+  background-color: #6c6f72;
+}
+.mainSheetContainer__btns {
+  gap: 1rem;
+}
+.mainSheetContainer__btns a {
+  color: #726c6f;
+  background-color: white;
+  padding: 0.3rem 0.5rem;
+  border-radius: 3px;
+  border: thin solid white;
+}
+.mainSheetContainer__btns a:hover {
+  cursor: pointer;
+  background-color: #726c6f;
+  color: white;
+  border: thin solid white;
+  box-shadow: 0 0 5px white;
+}
+
+.formBlocksContainer {
+  width: 90%;
+  height: 100%;
+  margin: auto;
+}
+.formBlocksContainer__formBlock {
+  width: 100%;
+  padding: 1rem;
+  gap: 1.5rem;
+}
+.formBlocksContainer__formBlock__form {
+  display: flex;
+  flex-direction: column;
+  min-width: 100%;
+  gap: 1rem;
+  margin: 1rem;
+}
+.formBlocksContainer__formBlock__form__inputGroup {
+  display: flex;
+  margin: 0.5rem;
+  width: 100%;
+}
+.formBlocksContainer__formBlock__form__inputGroup label {
+  display: inline-block;
+  width: fit-content;
+  width: 18%;
+  color: blue;
+  text-align: right;
+  padding-right: 0.4rem;
+}
+.formBlocksContainer__formBlock__form__inputGroup input, .formBlocksContainer__formBlock__form__inputGroup select, .formBlocksContainer__formBlock__form__inputGroup textarea {
+  width: 82%;
+  border-radius: 2px;
+  line-height: 1.1rem;
+  padding: 0.2rem;
+}
+.formBlocksContainer__formBlock__form__inputGroup__checkbox {
+  min-width: 550px;
+  display: flex;
+  flex-direction: row-reverse;
+  flex-wrap: wrap;
+  padding: 1rem;
+  background-color: #fff;
+  border-radius: 10px;
+}
+.formBlocksContainer__formBlock__form__inputGroup__checkbox label {
+  width: 90%;
+  margin: auto 0;
+  padding: 0.2rem 0 0.2rem 0;
+  text-align: left;
+}
+.formBlocksContainer__formBlock__form__inputGroup__checkbox input[type=checkbox] {
+  width: 10%;
+  display: flex;
+  flex-direction: row;
+  margin: auto 0;
+  padding: 0.2rem 0;
 }
 
 /*# sourceMappingURL=style.css.map */

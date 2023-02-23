@@ -102,8 +102,9 @@
         include_once('elements/header.php');
     ?>
     <?php //if (isset($sessionUserName)){ ?>
+        <div class="formBlocksContainer">
         <h1>Modification de la fiche utilisateur</h1>
-        <p>Pour changer le mot de passe utilisateur, marci de cliquer ici : <a href="user_change_password.php<?= '?id=' . $userId ?>">Changer le mot passe utilisateur</a></p>
+        <p>Pour changer le mot de passe utilisateur, merci de cliquer ici : <a href="user_change_password.php<?= '?id=' . $userId ?>">Changer le mot passe utilisateur</a></p>
 
         <?php if (isset($_GET['accessallowed']) && ($_GET['accessallowed'] === '0')) : ?>
         <p class="alert" style="color:red">Vous n'avez pas l'autorisation de modifier ce mot de passe</p>
@@ -113,64 +114,66 @@
 
         <!--Formulaire de modification-->
         <div class="formBlocksContainer">
-        <h2>Formulaire de modification</h2>
-        <blockquote>Attention : toutes les données saisies ici entraîneront des modifications définitives et une perte totale des anciennes données</blockquote>
-        <div class="formBlocks">
-            <div class="formBlock">
-                <h3>Merci de remplir tous les champs du formulaire</h3>
+            <h2>Formulaire de modification</h2>
+            <blockquote>Attention : toutes les données saisies ici entraîneront des modifications définitives et une perte totale des anciennes données</blockquote>
+                <div class="formBlocksContainer__formBlock">
+                    <h3>Merci de remplir tous les champs du formulaire</h3>
 
-                <form action="user_modify.php<?= '?id=' . $userId ?>" method="POST" enctype="multipart/form-data">
-                    <?php foreach ($values as $value) : ?>
+                    <form class="formBlocksContainer__formBlock__form" action="user_modify.php<?= '?id=' . $userId ?>" method="POST" enctype="multipart/form-data">
+                        <?php foreach ($values as $value) : ?>
+                            <h5>
+                                <span>ROLE ACTUEL DE L'UTILISATEUR : </span>
+                                <strong><?= $value['user_role'] ;?></strong>
+                            </h5>
 
-                    <?php if ($sessionUserRole === 'superadmin') : ?>
-                        <div class="inputGroup">
-                            <h5><span>ROLE ACTUEL DE L'UTILISATEUR : </span><strong><?= $value['user_role'] ;?></strong></h5>
-                            <label for="userNewRole">Modifier des droits admin :  : </label>
-                            <select name="userNewRole" id="userNewRole">
-                                <?php while($role = $requestRoles->fetch()) : ?>
-                                <option value="<?= $role['role_name'] ?>"><?= $role['role_name'] ?></option>
-                                <?php endwhile ;?>
-                            </select>
+                        <?php if ($sessionUserRole === 'superadmin') : ?>
+                            <div class="formBlocksContainer__formBlock__form__inputGroup">
+                                <label for="userNewRole">Modifier des droits utilisateur :</label>
+                                <select name="userNewRole" id="userNewRole">
+                                    <?php while($role = $requestRoles->fetch()) : ?>
+                                    <option value="<?= $role['role_name'] ?>"><?= $role['role_name'] ?></option>
+                                    <?php endwhile ;?>
+                                </select>
+                            </div>
+                        <?php endif ; ?>
+
+                        <div class="formBlocksContainer__formBlock__form__inputGroup">
+                            <label for="userLastName">Nom d'utilisateur</label>
+                            <input type="text" required name="userLastName" id="userLastName" value="<?= $value['user_lastname'] ?>">
                         </div>
-                    <?php endif ; ?>
 
-                    <div class="inputGroup">
-                        <label for="userLastName">Nom d'utilisateur</label>
-                        <input type="text" required name="userLastName" id="userLastName" value="<?= $value['user_lastname'] ?>">
-                    </div>
+                        <div class="formBlocksContainer__formBlock__form__inputGroup">
+                            <label for="userFirstName">Prénom d'utilisateur</label>
+                            <input type="text" required name="userFirstName" id="userFirstName" value="<?= $value['user_firstname'] ;?>">
+                        </div>
 
-                    <div class="inputGroup">
-                        <label for="userFirstName">Prénom d'utilisateur</label>
-                        <input type="text" required name="userFirstName" id="userFirstName" value="<?= $value['user_firstname'] ;?>">
-                    </div>
+                        <div class="formBlocksContainer__formBlock__form__inputGroup">
+                            <label for="userPseudo">Pseudo de connexion</label>
+                            <input type="text" required name="userPseudo" id="userPseudo" value="<?= $value['user_pseudo'] ;?>">
+                        </div>
 
-                    <div class="inputGroup">
-                        <label for="userPseudo">Pseudo de connexion</label>
-                        <input type="text" required name="userPseudo" id="userPseudo" value="<?= $value['user_pseudo'] ;?>">
-                    </div>
+                        <div class="formBlocksContainer__formBlock__form__inputGroup">
+                            <label for="userMail">email</label>
+                            <input type="email" required name="userMail" id="userMail" value="<?= $value['user_mail'] ;?>">
+                        </div>
+                    
+                        <div class="formBlocksContainer__formBlock__form__inputGroup">
+                            <label for="userInfos">Informations particulières</label>
+                            <textarea rows="5" cols="20" name="userInfos"><?= $value['user_infos'] ;?></textarea>
+                        </div>
 
-                    <div class="inputGroup">
-                        <label for="userMail">email</label>
-                        <input type="email" required name="userMail" id="userMail" value="<?= $value['user_mail'] ;?>">
-                    </div>
-                 
-                    <div class="inputGroup">
-                        <label for="userInfos">Informations particulières</label>
-                        <textarea rows="5" cols="20" name="userInfos"><?= $value['user_infos'] ;?></textarea>
-                    </div>
+                        <div class="formBlocksContainer__formBlock__form__inputGroup">
+                            <label for="userPhoto">Photo ID</label>
+                            <img src="assets/img/usersimg/<?= $value['user_photo'] ;?>" width="150">
+                            <input type="file" name="userPhoto" id="userPhoto">>
+                        </div>
 
-                    <div class="inputGroup">
-                        <label for="userPhoto">Photo ID</label>
-                        <img src="assets/img/usersimg/<?= $value['user_photo'] ;?>" width="150">
-                        <input type="file" name="userPhoto" id="userPhoto">>
-                    </div>
+                        <?php endforeach; ?>
+                        <button class="connectBtn" >Valider TOUTES les modifications</button> 
 
-                    <?php endforeach; ?>
-                    <button class="connectBtn" >Valider TOUTES les modifications</button> 
-
-                </form>
-                
-            </div>
+                    </form>
+                    
+                </div>
         </div>
     </div>
     <?php //endif ; ?>

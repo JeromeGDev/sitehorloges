@@ -28,14 +28,10 @@ HTML;
     function nav_menu (string $linkClass = ''): string{
         return 
         nav_item('index.php', 'Accueil', $linkClass) .
-        nav_item('signin.php', 'USER Créer utilisateur OK', $linkClass) .
-        nav_item('user_list.php', 'USER Liste utilisateurs OK', $linkClass) .
+        nav_item('signin.php', 'Créer utilisateur OK', $linkClass) .
+        nav_item('user_list.php', 'Liste utilisateurs OK', $linkClass) .
         nav_item('product_add.php', 'Ajouter une horologe', $linkClass) .
-        nav_item('logement_list.php', 'Liste des horloges', $linkClass) .
-        nav_item('preselection.php', 'Preselection', $linkClass) .
-        nav_item('gestionnaire_add.php', 'GESTIONNAIRE Ajouter un propriétaire', $linkClass) .
-        nav_item('gestionnaire_list.php', 'GESTIONNAIRE Liste des propriétaires', $linkClass) .
-        nav_item('categorie_add.php', 'Ajouter/lister categories OK', $linkClass) .
+        nav_item('product_list.php', 'Liste des horloges', $linkClass) .
         nav_item('type_add.php', 'Ajouter lister types OK', $linkClass) .
         nav_item('contact.php', 'Contact', $linkClass);
     }

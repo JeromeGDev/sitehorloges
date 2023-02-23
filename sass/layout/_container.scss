@@ -1,1 +1,108 @@
-
+@use 'sass:math';
+@use 'sass:color';
+.tblList{
+    width: 100%;
+    border:thin solid $fifthClr;
+    border-radius:5px;
+    &__header{
+        &__row{
+            &__box{
+                border:thin solid $fifthClr;
+                background-color: lighten(color.complement($fifthClr),70);
+                padding:.5rem;
+                &:first-child{
+                    border-top-left-radius: 5px;
+                }
+                &:last-child{
+                    border-top-right-radius: 5px;
+                }
+            }
+        }
+    }
+    &__content{
+        &__row{
+            &__box{
+                border:thin solid $fifthClr;
+                background-color: $fifthClr;
+                padding:.5rem;
+                color: lighten(color.complement($fifthClr),70);
+                &:first-child{
+                    border-top-left-radius: 5px;
+                }
+                &:last-child{
+                    border-top-right-radius: 5px;
+                    text-align: center;
+                    & a{
+                        color: $fifthClr;
+                        background-color: lighten(color.complement($fifthClr),70);
+                        padding: .3rem .5rem;
+                        border-radius: 3px;
+                        border: thin solid lighten(color.complement($fifthClr),70);
+                        &:hover{
+                            cursor:pointer;
+                            background-color: $fifthClr;
+                            color: lighten(color.complement($fifthClr),70);
+                            border: thin solid lighten(color.complement($fifthClr),70);
+                            box-shadow: 0 0 5px lighten(color.complement($fifthClr),70);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+.mainSheetContainer{
+    width:100%;
+    padding:1rem;
+    gap:1rem;
+    & h1{
+        color:#fff;
+        background-color: $secondaryClr;
+        padding:.5rem;
+    }
+    &__child{
+        display: flex;
+        flex-direction: column;
+        gap:1rem;
+        &__articleContainer{
+            display: flex;gap:1rem;
+            background-color: $thirdClr;
+            &__imgC{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                overflow: hidden;
+                width: 400px;
+                height: 400px;
+                & img{
+                    border:2px solid #000;
+                    box-shadow: 0 0 5px #00000050
+                }
+            }
+            &__block{
+                gap:1rem;
+                display: flex;
+                flex-direction: column;
+                padding:1.5rem;
+                background-color: $secondaryClr;
+            }
+        }
+    }
+    &__btns{
+        gap:1rem;
+        & a{
+            color: $fifthClr;
+            background-color: lighten(color.complement($fifthClr),70);
+            padding: .3rem .5rem;
+            border-radius: 3px;
+            border: thin solid lighten(color.complement($fifthClr),70);
+            &:hover{
+                cursor:pointer;
+                background-color: $fifthClr;
+                color: lighten(color.complement($fifthClr),70);
+                border: thin solid lighten(color.complement($fifthClr),70);
+                box-shadow: 0 0 5px lighten(color.complement($fifthClr),70);
+            }
+        }
+    }
+}

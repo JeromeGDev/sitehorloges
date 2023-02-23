@@ -76,56 +76,53 @@
 <!-- <?php //if (isset($sessionuserLastName)): ?> -->
     <div class="formBlocksContainer">
         <h2>Formulaire d'inscription</h2>
-        <div class="formBlocks">
+        <div class="formBlocksContainer__formBlock">
+            <h3>Merci de remplir tous les champs du formulaire</h3>
 
-            <div class="formBlock">
-                <h3>Merci de remplir tous les champs du formulaire</h3>
+            <form class="formBlocksContainer__formBlock__form" action="signin.php" method="POST" enctype="multipart/form-data">
 
-                <form action="signin.php" method="POST" enctype="multipart/form-data">
+                <div class="formBlocksContainer__formBlock__form__inputGroup">
+                    <label for="userLastName">Nom de famille</label>
+                    <input type="text" required name="userLastName" id="userLastName" placeholder="DUPONT, DURANT" value="">
+                </div>
 
-                    <div class="inputGroup">
-                        <label for="userLastName">Nom de famille</label>
-                        <input type="text" required name="userLastName" id="userLastName" placeholder="DUPONT, DURANT" value="">
-                    </div>
+                <div class="formBlocksContainer__formBlock__form__inputGroup">
+                    <label for="userFirstName">Prénom</label>
+                    <input type="text" required name="userFirstName" id="userFirstName" placeholder="Henri, Nestor...">
+                </div>
 
-                    <div class="inputGroup">
-                        <label for="userFirstName">Prénom</label>
-                        <input type="text" required name="userFirstName" id="userFirstName" placeholder="Henri, Nestor...">
-                    </div>
+                <div class="formBlocksContainer__formBlock__form__inputGroup">
+                    <label for="userPseudo">Pseudo de connexion</label>
+                    <input type="text" required name="userPseudo" id="userPseudo" placeholder="Herni241, Nest2KvC...">
+                </div>
 
-                    <div class="inputGroup">
-                        <label for="userPseudo">Pseudo de connexion</label>
-                        <input type="text" required name="userPseudo" id="userPseudo" placeholder="Herni241, Nest2KvC...">
-                    </div>
+                <div class="formBlocksContainer__formBlock__form__inputGroup">
+                    <label for="userMail">email</label>
+                    <input type="email" required name="userMail" id="userMail" placeholder="henri@fai.com...">
+                </div>
 
-                    <div class="inputGroup">
-                        <label for="userMail">email</label>
-                        <input type="email" required name="userMail" id="userMail" placeholder="henri@fai.com...">
-                    </div>
+                <div class="formBlocksContainer__formBlock__form__inputGroup">
+                    <label for="userInfos">Informations particulières</label>
+                    <textarea rows="5" cols="20" name="userInfos" placeholder=""></textarea>
+                </div>
 
-                    <div class="inputGroup">
-                        <label for="userInfos">Informations particulières</label>
-                        <textarea rows="5" cols="20" name="userInfos" placeholder=""></textarea>
-                    </div>
+                <div class="formBlocksContainer__formBlock__form__inputGroup">
+                    <label for="userPhoto">Photo ID</label>
+                    <input type="file" name="userPhoto" id="userPhoto">
+                </div>
 
-                    <div class="inputGroup">
-                        <label for="userPhoto">Photo ID</label>
-                        <input type="file" name="userPhoto" id="userPhoto">
-                    </div>
+                <div class="formBlocksContainer__formBlock__form__inputGroup">
+                    <label for="userPsd">Mot de passe</label>
+                    <input type="password" required name="userPsd" id="userPsd">
+                </div>
 
-                    <div class="inputGroup">
-                        <label for="userPsd">Mot de passe</label>
-                        <input type="password" required name="userPsd" id="userPsd">
-                    </div>
+                <div class="formBlocksContainer__formBlock__form__inputGroup">
+                    <label for="userPsdConfirm">Confirmation de Mot de passe</label>
+                    <input type="password" required name="userPsdConfirm" id="userPsdConfirm">
+                </div>
+                <button class="btn btn__form"  type="submit">Valider inscription</button>
 
-                    <div class="inputGroup">
-                        <label for="userPsdConfirm">Confirmation de Mot de passe</label>
-                        <input type="password" required name="userPsdConfirm" id="userPsdConfirm">
-                    </div>
-                    <button class=""  type="submit">Valider inscription</button>
-
-                </form>
-            </div>
+            </form>
         </div>
     </div>
 <!-- <?php //endif ; ?> -->

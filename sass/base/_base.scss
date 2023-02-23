@@ -6,12 +6,12 @@
 }
 body{
     font-size:16px;
-    background-color:$doorFixed ;
+    background-color:lighten($primaryClr, 80) ;
 }
 
 html, body{
     height:100%;
     width:100%;
     max-width: 100vw;
-    overflow: hidden;
+    font-family: sans-serif;
 }

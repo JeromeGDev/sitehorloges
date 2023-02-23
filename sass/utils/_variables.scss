@@ -28,23 +28,23 @@ $aspectRatio : 250/90;
 
 
 /* ============================= Boutons isolés =============================  */
-$primaryClr : ;
+$primaryClr : #1c2b3d;
 $primaryClrHvr : lighten($primaryClr, 20%);
 $primaryClrActive :darken($primaryClr, 20%) ;
 
-$secondaryClr : ;
+$secondaryClr : color.invert($primaryClr,40%);
 $secondaryClrHvr : lighten($secondaryClr, 20%);
 $secondaryClrActive :darken($secondaryClr, 20%) ;
 
-$thirdClr : ;
+$thirdClr : color.complement($primaryClr);
 $thirdClrHvr : lighten($thirdClr, 20%);
 $thirdClrActive :darken($thirdClr, 20%) ;
 
-$fourthClr : ;
+$fourthClr : adjust-hue($primaryClr,170deg);;
 $fourthClrHvr : lighten($fourthClr, 20%);
 $fourthClrActive :darken($fourthClr, 20%) ;
 
-$fifthClr : ;
+$fifthClr : adjust-hue($secondaryClr,120deg);;
 $fifthClrHvr : lighten($fifthClr, 20%);
 $fifthClrActive :darken($fifthClr, 20%) ;
 

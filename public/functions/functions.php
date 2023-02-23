@@ -86,3 +86,15 @@ HTML;
         exit();
         echo '</pre>';
     }
+
+    /**
+     * Fonction de d'un tableau de vairables
+     */
+    function dda(array $as){
+        while ( $as){
+            echo '<pre>';
+            var_dump($as);
+            exit();
+            echo '</pre>';
+        }
+    }

@@ -1,5 +1,3 @@
-/public/functions/encode.php
-/public/functions/environnement.php
-/public/functions/session.php
-/public/.dccache
-/public/.dcignore
+
+# /public/.dccache
+# /public/.dcignore

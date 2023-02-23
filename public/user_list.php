@@ -10,11 +10,11 @@
 <?php include 'elements/header.php' ; ?>
 <?php if(isset($GET['successcreateuser']) && ($GET['successcreateuser'] === 1)) : ?>
     Utilisateur créé avec succès
-    <? elseif(isset($GET['successmodify']) && ($GET['successmodify'] === 1)) :?>
+<? elseif(isset($GET['successmodify']) && ($GET['successmodify'] === 1)) :?>
     Utilisateur modifié avec succès
-    <? elseif(isset($GET['successdelete']) && ($GET['successdelete'] === 1)) :?>
+<? elseif(isset($GET['successdelete']) && ($GET['successdelete'] === 1)) :?>
     Utilisateur supprimé avec succès
-    <?php endif ;?>
+<?php endif ;?>
     
         <?php if (isset($sessionUserName)): ?>
             <h2><?= $sessionUserName ?>, voici la liste des utilisateurs</h2>
@@ -31,8 +31,8 @@
                         <th class="tblList__header__row__box">mail</th>
                         <th class="tblList__header__row__box">role</th>
                         <th class="tblList__header__row__box">infos</th>
-                        <?php if(isset($userRole) & (($userRole === 'admin') || ($userRole === 'superadmin'))) :?>
-                        <th class="tblList__header__row__box">Modifier</th>
+                        <?php if( isset($sessionUserRole) & ( ($sessionUserRole === 'admin') || ($sessionUserRole === 'superadmin') ) ) :?>
+                        <th class="tblList__header__row__box">Consulter</th>
                         <?php endif;?>
                     </tr
                 </thead>
@@ -47,9 +47,8 @@
                             <td class="tblList__content__row__box tableDesc"><?= $users['user_mail']?></td>
                             <td class="tblList__content__row__box tableDesc"><?= $users['user_role']?></td>
                             <td class="tblList__content__row__box tableDesc"><?= $users['user_infos']?></td>
-                            <?php if(isset($userRole) & (($userRole === 'admin') || ($userRole === 'superadmin'))) :?>
-                            <td class="tblList__content__row__box tableDesc"><a href="user_fiche.php?id=<?= $users['id']?>">Détails / Modifier fiche</a></td>
-                            <td class="tblList__content__row__box tableDesc"><a href="user_del.php?id=<?= $users['id']?>">Supprimer</a></td>
+                            <?php if(isset($sessionUserRole) & (($sessionUserRole === 'admin') || ($sessionUserRole === 'superadmin'))) :?>
+                            <td class="tblList__content__row__box tableDesc"><a href="user_sheet.php?id=<?= $users['id']?>">Détails fiche - modifier</a></td>
                             <?php endif;?>
                         </tr>
                     <?php endwhile ; ?>

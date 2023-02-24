@@ -5,4 +5,6 @@
     $sessionUserId = $_SESSION["userId"];
     $sessionUserName = $_SESSION["userName"];
     $sessionUserRole = $_SESSION["adminAccess"];
+    $sessionUserFirstName = $_SESSION["userFirstName"];
+    $sessionUserPseudo = $_SESSION["userPseudo"];
   }

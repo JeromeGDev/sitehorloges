@@ -2,13 +2,6 @@
     include_once __DIR__. DIRECTORY_SEPARATOR .'functions'. DIRECTORY_SEPARATOR .'environnement.php';
 	include_once __DIR__. DIRECTORY_SEPARATOR .'functions'. DIRECTORY_SEPARATOR .'functions.php';
 
-    //var_dump('SESSION');
-    //var_dump($_SESSION);
-    //var_dump('POST');
-    //var_dump($_POST);
-    //var_dump('FILES');
-    //var_dump($_FILES);
-    //exit();
     //REQUETE SELECT POUR REMPLISSAGE AUTO
     $userId = htmlspecialchars($_GET['id']);
 
@@ -65,14 +58,7 @@
                         //GENERATION D'UN NOM DE FICHIER UNIQUE
                         $uniquePhotoName = $imageName . time() . rand(1, 1000) . "." . $extImage;
                         move_uploaded_file($imageTmp, $absPath . $uniquePhotoName);
-                        // var_dump($absPath);
-                        // var_dump($userPhoto);
-                        // var_dump($imageTmp);
-                        // var_dump($infoImage);
-                        // var_dump($extImage);
-                        // var_dump($imageName);
-                        //var_dump($uniquePhotoName);
-                        //exit();
+
                         $request = $bdd->prepare('UPDATE users
                                             SET user_lastname = :user_lastname , user_firstname = :user_firstname,user_pseudo = :user_pseudo,user_mail = :user_mail,user_role = :user_role,user_photo = :user_photo,user_infos = :user_infos
                                             WHERE id = :id');
@@ -101,7 +87,7 @@
     <?php
         include_once('elements/header.php');
     ?>
-    <?php //if (isset($sessionUserName)){ ?>
+    <?php if (isset($sessionUserName)) : ?>
         <div class="formBlocksContainer">
         <h1>Modification de la fiche utilisateur</h1>
         <p>Pour changer le mot de passe utilisateur, merci de cliquer ici : <a href="user_change_password.php<?= '?id=' . $userId ?>">Changer le mot passe utilisateur</a></p>
@@ -176,7 +162,7 @@
                 </div>
         </div>
     </div>
-    <?php //endif ; ?>
+    <?php endif ; ?>
 
     <?php
         include_once('elements/footer.php');

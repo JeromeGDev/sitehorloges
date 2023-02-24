@@ -20,9 +20,14 @@
                 if( $passwordCrypt === $user["user_password"] ){
                     $sessionUserId =  $user["id"];
                     $sessionUserName = $user['user_lastname'];
+                    $sessionUserFirstName = $user['user_firstname'];
                     $sessionUserRole = $user['user_role'];
+                    $sessionUserPseudo = $user['user_pseudo'];
+
                     $_SESSION["userId"] = $sessionUserId;
                     $_SESSION["userName"] = $sessionUserName;
+                    $_SESSION["userFirstName"] = $sessionUserFirstName;
+                    $_SESSION["userPseudo"] = $sessionUserPseudo;
                     $_SESSION["adminAccess"] = $sessionUserRole;
    
                     header('Location: index.php?successconnect=1');

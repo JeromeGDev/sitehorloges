@@ -31,7 +31,7 @@
         $productMatiere = htmlspecialchars($_POST['productMatiere']);
         $productCategory = htmlspecialchars($_POST['productCategory']);
         // optionnel
-        $productPhoto = htmlspecialchars($_POST['productPhoto']);
+        //$productPhoto = htmlspecialchars($_POST['productPhoto']);
         $productHistory = htmlspecialchars($_POST['productHistory']);
         $productDesc = htmlspecialchars($_POST['productDesc']);
         // Traitement checkbox
@@ -44,12 +44,12 @@
         $productDateUpdate = date('Y-m-d H:i:s');
 
         // Enregistrement Photo
-        if (isset($_FILES['userPhoto']) ) {
+        if (isset($_FILES['productPhoto']) ) {
             $absPath = 'assets/img/productimg/';
             // NOM DU FICHIER IMAGE
             $productPhoto = htmlspecialchars(trim(strtolower($_FILES['productPhoto']['name'])));
             
-            $imageTmp = $_FILES['userPhoto']['tmp_name']; // NOM TEMPORAIRE DU FICHIER IMAGE
+            $imageTmp = $_FILES['productPhoto']['tmp_name']; // NOM TEMPORAIRE DU FICHIER IMAGE
             $infoImage = pathinfo($productPhoto); //TABLEAU QUI DECORTIQUE LE NOM DE FICHIER
             $extImage = $infoImage['extension']; //EXTENSION
             if(file_exists($absPath . DIRECTORY_SEPARATOR . $productPhoto)) {
@@ -69,16 +69,16 @@
             // exit();
             move_uploaded_file($imageTmp, $absPath . $uniquePhotoName);
         }
-
+        // dda([$productName,$productPeriod,$productBrand,$productModel,$productStyle,$productDesc,$productHistory,$uniquePhotoName,$productDateCreate,$productDateUpdate,$productMatiere,$productCategory,$productFeatures,$userId]);
         // // REQUÊTE INSERTION PRODUITS
-        // $requestProduct = $bdd->prepare("INSERT INTO products(product_name, product_period, product_brand, product_model, product_style, product_description, product_history, product_photo, product_date_create, product_date_update, product_matiere_id, category_id, product_feature_id, user_id )
-        //                                 VALUES ( ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ?)
-        // ");
-        // // REQUÊTE EXECUTION PRODUITS    
-        // $requestProduct -> execute([$productName,$productPeriod,$productBrand,$productModel,$productStyle,$productDesc,$productHistory,$uniquePhotoName,$productDateCreate,$productDateUpdate,$productMatiere,$productCategory,$productFeatures,$userId]);
+        $requestProduct = $bdd->prepare("INSERT INTO products(product_name, product_period, product_brand, product_model, product_style, product_description, product_history, product_photo, product_date_create, product_date_update, product_matiere_id, category_id, /* product_feature_id, */ user_id )
+                                        VALUES ( ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , /* ? , */ ?)
+        ");
+        // REQUÊTE EXECUTION PRODUITS    
+        $requestProduct -> execute([$productName,$productPeriod,$productBrand,$productModel,$productStyle,$productDesc,$productHistory,$uniquePhotoName,$productDateCreate,$productDateUpdate,$productMatiere,$productCategory/* ,$productFeatures */,$userId]);
 
-        // $productId = db2_last_insert_id($requestProduct);
-        // dd($productId);
+        //$productId = db2_last_insert_id($requestProduct);
+        
         // // REQUÊTE INSERTION CARACTÉRISTIQUES
         // $requestFeatureLink = $bdd->prepare('INSERT INTO products_features(feature_id,product_id,feature_id)
         //                                     SELECT product_id
@@ -88,18 +88,18 @@
         // // REQUÊTE EXECUTION CARACTÉRISTIQUES
         // $requestFeatureLink->execute([$productId,$productFeatures]);
 
-        $stmt4=$bdd->prepare("INSERT INTO products_features(feature_id,product_id,feature_id)
-                                    SELECT p.id, f.id
-                                    FROM products AS p
-                                    CROSS JOIN features AS f
-                                    WHERE p.product_feature_id = ?
-                                    AND f.feature_label = ?");
+        // $stmt4=$bdd->prepare("INSERT INTO products_features(feature_id,product_id,feature_id)
+        //                             SELECT p.id, f.id
+        //                             FROM products AS p
+        //                             CROSS JOIN features AS f
+        //                             WHERE p.product_feature_id = ?
+        //                             AND f.feature_label = ?");
 
-        $stmt4->bind_param("s",$name, $_POST['feature_label']);
+        // $stmt4->bind_param("s",$name, $_POST['feature_label']);
 
-        foreach ($_POST['productName'] as $name) {
-            $stmt4->execute([]);
-        }
+        // foreach ($_POST['productName'] as $name) {
+        //     $stmt4->execute([]);
+        // }
 
     }
 ?>
@@ -110,7 +110,7 @@
     <div class="formBlocksContainer__formBlock">
         <h3>Merci de remplir tous les champs du formulaire</h3>
 
-        <form class="formBlocksContainer__formBlock__form" action="product_add" method="POST" enctype="multipart/form-data">
+        <form class="formBlocksContainer__formBlock__form" action="product_add.php" method="POST" enctype="multipart/form-data">
 
             <div class="formBlocksContainer__formBlock__form__inputGroup">
                 <label for="productName">Désignation de l'Horloge</label>
@@ -154,7 +154,7 @@
 
             <div class="formBlocksContainer__formBlock__form__inputGroup">
                 <label for="productMatiere">Matière</label>
-                <select name="productMatiere" id="productMatiere">
+                <select required name="productMatiere" id="productMatiere">
                     <?php foreach($matieres as $matiere) : ?>
                         <option value="<?= $matiere['id'] ;?>"><?= $matiere['label'] ;?></option>
                     <?php endforeach ; ?>
@@ -163,7 +163,7 @@
 
             <div class="formBlocksContainer__formBlock__form__inputGroup">
                 <label for="productCategory">Catégorie</label>
-                <select name="" id="productCategory" name="productCategory">
+                <select requiredid="productCategory" name="productCategory">
                     <?php foreach($categories as $categorie) : ?>
                         <option value="<?= $categorie['id'];?>"><?= $categorie['categorie_name'];?></option>
                     <?php endforeach ;?>
@@ -181,7 +181,7 @@
                 </div>
             </div>
 
-            <button class="" type="submit">Ajouter le produit</button>
+            <button class="btn btn__form" type="submit">Ajouter le produit</button>
 
         </form>
     </div>

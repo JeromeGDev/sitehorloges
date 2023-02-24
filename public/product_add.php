@@ -97,8 +97,8 @@
 
         $stmt4->bind_param("s",$name, $_POST['feature_label']);
 
-        foreach ($_POST['products'] as $name) {
-            $stmt4->execute();
+        foreach ($_POST['productName'] as $name) {
+            $stmt4->execute([]);
         }
 
     }

@@ -31,14 +31,10 @@
         $productMatiere = htmlspecialchars($_POST['productMatiere']);
         $productCategory = htmlspecialchars($_POST['productCategory']);
         // optionnel
-        //$productPhoto = htmlspecialchars($_POST['productPhoto']);
         $productHistory = htmlspecialchars($_POST['productHistory']);
         $productDesc = htmlspecialchars($_POST['productDesc']);
         // Traitement checkbox
-        $productFeatures = htmlspecialchars($_POST['productFeatures']);
-        // foreach($productFeatures as $productFeature){
-        //     $productFeature[] = htmlspecialchars($_POST['productFeatures']);
-        // }  
+        $productFeatures = $_POST['productFeatures'];
         // automatique
         $productDateCreate = date('Y-m-d H:i:s');
         $productDateUpdate = date('Y-m-d H:i:s');
@@ -69,39 +65,27 @@
             // exit();
             move_uploaded_file($imageTmp, $absPath . $uniquePhotoName);
         }
-        // dda([$productName,$productPeriod,$productBrand,$productModel,$productStyle,$productDesc,$productHistory,$uniquePhotoName,$productDateCreate,$productDateUpdate,$productMatiere,$productCategory,$productFeatures,$userId]);
-        // // REQUÊTE INSERTION PRODUITS
+        
+        // REQUÊTE INSERTION PRODUITS
         $requestProduct = $bdd->prepare("INSERT INTO products(product_name, product_period, product_brand, product_model, product_style, product_description, product_history, product_photo, product_date_create, product_date_update, product_matiere_id, category_id, /* product_feature_id, */ user_id )
                                         VALUES ( ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , /* ? , */ ?)
         ");
-        // REQUÊTE EXECUTION PRODUITS
-
+        // REQUÊTE EXECUTION DE L'INSERTION DES PRODUITS
         $requestProduct -> execute([$productName,$productPeriod,$productBrand,$productModel,$productStyle,$productDesc,$productHistory,$uniquePhotoName,$productDateCreate,$productDateUpdate,$productMatiere,$productCategory/* ,$productFeatures */,$userId]);
 
-        
+        // Récupération de l'id du produit inséré
         $last_insert_id = $bdd->lastInsertId();
+        // Débogage $last_insert_id => vérification de la récupération de la bonne ID product
+        //dd($last_insert_id);
+
         // REQUÊTE INSERTION CARACTÉRISTIQUES
         $requestFeatureLink = $bdd->prepare('INSERT INTO products_features(product_id,feature_id)
                                             VALUES (? , ?)
         ');
         // // REQUÊTE EXECUTION CARACTÉRISTIQUES
         foreach($productFeatures as $productFeature){
-            $requestFeatureLink->execute([$last_insert_id,$productFeature]);
+            $requestFeatureLink->execute([$last_insert_id,htmlspecialchars($productFeature)]);
         }  
-        
-
-        // $stmt4=$bdd->prepare("INSERT INTO products_features(feature_id,product_id,feature_id)
-        //                             SELECT p.id, f.id
-        //                             FROM products AS p
-        //                             CROSS JOIN features AS f
-        //                             WHERE p.product_feature_id = ?
-        //                             AND f.feature_label = ?");
-
-        // $stmt4->db2_bind_param("s",$name, $_POST['feature_label']);
-
-        // foreach ($_POST['productName'] as $name) {
-        //     $stmt4->execute([]);
-        // }
 
     }
 ?>

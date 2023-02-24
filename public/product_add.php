@@ -38,7 +38,7 @@
         $productFeatures=[];
         foreach($productFeatures as $productFeature){
             $productFeature[] = htmlspecialchars($_POST['productFeatures']);
-        }
+        }  
         // automatique
         $productDateCreate = date('Y-m-d H:i:s');
         $productDateUpdate = date('Y-m-d H:i:s');
@@ -74,19 +74,28 @@
         $requestProduct = $bdd->prepare("INSERT INTO products(product_name, product_period, product_brand, product_model, product_style, product_description, product_history, product_photo, product_date_create, product_date_update, product_matiere_id, category_id, /* product_feature_id, */ user_id )
                                         VALUES ( ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , /* ? , */ ?)
         ");
-        // REQUÊTE EXECUTION PRODUITS    
+        // REQUÊTE EXECUTION PRODUITS
+
         $requestProduct -> execute([$productName,$productPeriod,$productBrand,$productModel,$productStyle,$productDesc,$productHistory,$uniquePhotoName,$productDateCreate,$productDateUpdate,$productMatiere,$productCategory/* ,$productFeatures */,$userId]);
 
-        //$productId = db2_last_insert_id($requestProduct);
         
-        // // REQUÊTE INSERTION CARACTÉRISTIQUES
-        // $requestFeatureLink = $bdd->prepare('INSERT INTO products_features(feature_id,product_id,feature_id)
-        //                                     SELECT product_id
-        //                                     WHERE product_id = LAST_INSERT_ID()
-        //                                     VALUES (? , ?)
-        // ');
+        
+        // REQUÊTE INSERTION CARACTÉRISTIQUES
+        $requestFeatureLink = $bdd->prepare('INSERT INTO products_features(product_id,feature_id)
+                                            SELECT product_id
+                                            FROM products
+                                            WHERE product_id = (
+                                                SELECT products.id
+                                                FROM products
+                                                LIMIT 1)
+                                            VALUES (product_id , ?)
+        ');
         // // REQUÊTE EXECUTION CARACTÉRISTIQUES
-        // $requestFeatureLink->execute([$productId,$productFeatures]);
+        foreach($productFeatures as $productFeature){
+            //$productFeature[] = htmlspecialchars($_POST['productFeatures']);
+            $requestFeatureLink->execute([$productFeature]);
+        }  
+        
 
         // $stmt4=$bdd->prepare("INSERT INTO products_features(feature_id,product_id,feature_id)
         //                             SELECT p.id, f.id
@@ -95,7 +104,7 @@
         //                             WHERE p.product_feature_id = ?
         //                             AND f.feature_label = ?");
 
-        // $stmt4->bind_param("s",$name, $_POST['feature_label']);
+        // $stmt4->db2_bind_param("s",$name, $_POST['feature_label']);
 
         // foreach ($_POST['productName'] as $name) {
         //     $stmt4->execute([]);

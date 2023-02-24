@@ -35,10 +35,10 @@
         $productHistory = htmlspecialchars($_POST['productHistory']);
         $productDesc = htmlspecialchars($_POST['productDesc']);
         // Traitement checkbox
-        $productFeatures=[];
-        foreach($productFeatures as $productFeature){
-            $productFeature[] = htmlspecialchars($_POST['productFeatures']);
-        }  
+        $productFeatures = htmlspecialchars($_POST['productFeatures']);
+        // foreach($productFeatures as $productFeature){
+        //     $productFeature[] = htmlspecialchars($_POST['productFeatures']);
+        // }  
         // automatique
         $productDateCreate = date('Y-m-d H:i:s');
         $productDateUpdate = date('Y-m-d H:i:s');
@@ -79,21 +79,14 @@
         $requestProduct -> execute([$productName,$productPeriod,$productBrand,$productModel,$productStyle,$productDesc,$productHistory,$uniquePhotoName,$productDateCreate,$productDateUpdate,$productMatiere,$productCategory/* ,$productFeatures */,$userId]);
 
         
-        
+        $last_insert_id = $bdd->lastInsertId();
         // REQUÊTE INSERTION CARACTÉRISTIQUES
         $requestFeatureLink = $bdd->prepare('INSERT INTO products_features(product_id,feature_id)
-                                            SELECT product_id
-                                            FROM products
-                                            WHERE product_id = (
-                                                SELECT products.id
-                                                FROM products
-                                                LIMIT 1)
-                                            VALUES (product_id , ?)
+                                            VALUES (? , ?)
         ');
         // // REQUÊTE EXECUTION CARACTÉRISTIQUES
         foreach($productFeatures as $productFeature){
-            //$productFeature[] = htmlspecialchars($_POST['productFeatures']);
-            $requestFeatureLink->execute([$productFeature]);
+            $requestFeatureLink->execute([$last_insert_id,$productFeature]);
         }  
         
 

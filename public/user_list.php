@@ -31,7 +31,7 @@
                         <th class="tblList__header__row__box">mail</th>
                         <th class="tblList__header__row__box">role</th>
                         <th class="tblList__header__row__box">infos</th>
-                        <?php if( isset($sessionUserRole) & ( ($sessionUserRole === 'admin') || ($sessionUserRole === 'superadmin') ) ) :?>
+                        <?php if( isset($sessionUserRole) && ( ($sessionUserRole === 'admin') || ($sessionUserRole === 'superadmin') ) ) :?>
                         <th class="tblList__header__row__box">Consulter</th>
                         <?php endif;?>
                     </tr
@@ -47,7 +47,7 @@
                             <td class="tblList__content__row__box tableDesc"><?= $users['user_mail']?></td>
                             <td class="tblList__content__row__box tableDesc"><?= $users['user_role']?></td>
                             <td class="tblList__content__row__box tableDesc"><?= $users['user_infos']?></td>
-                            <?php if(isset($sessionUserRole) & (($sessionUserRole === 'admin') || ($sessionUserRole === 'superadmin'))) :?>
+                            <?php if(isset($sessionUserRole) && (($sessionUserRole === 'admin') || ($sessionUserRole === 'superadmin'))) :?>
                             <td class="tblList__content__row__box tableDesc"><a href="user_sheet.php?id=<?= $users['id']?>">Détails fiche - modifier</a></td>
                             <?php endif;?>
                         </tr>
@@ -55,7 +55,7 @@
                 </tbody>
                 <tfoot class="tblList__footer">
                     <tr class="tblList__footer__row">
-                        <td colspan="5" class="tblList__footer__row__box action footerBox"><a class="adder" href="signin.php">Ajouter un nouvel utilisateur</a></td></tr>
+                        <td colspan="7" class="tblList__footer__row__box action footerBox"><a class="btn btn__form" href="signin.php">Ajouter un nouvel utilisateur</a></td></tr>
                 </tfoot>
             </table>
     

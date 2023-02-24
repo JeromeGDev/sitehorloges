@@ -8478,105 +8478,114 @@ html, body {
   align-items: center;
   align-content: center;
   width: 350px;
-  aspect-ratio: 350/100;
+  aspect-ratio: 350/50;
   padding: 1rem 2rem 0.8rem 2rem;
   margin: auto;
+  border-radius: 4px;
 }
-.btn--alert {
+.btn__alert {
   color: #fff;
   background-color: #ed0000;
 }
-.btn--alert:hover {
+.btn__alert:hover {
   color: #fff;
   background-color: #810202;
 }
-.btn--success {
+.btn__success {
   color: #fff;
   background-color: #81ca57;
 }
-.btn--success:hover {
+.btn__success:hover {
   color: #fff;
   background-color: #466d2f;
 }
-.btn--danger {
+.btn__danger {
   color: #fff;
   background-color: #f09621;
 }
-.btn--danger:hover {
+.btn__danger:hover {
   color: #fff;
   background-color: #915a14;
 }
-.btn--sun {
+.btn__sun {
   color: #fff;
   background-color: #f1bd2c;
 }
-.btn--sun:hover {
+.btn__sun:hover {
   color: #fff;
   background-color: #7e6216;
 }
-.btn--gold {
+.btn__gold {
   color: #000;
   background-color: #c7a71b;
 }
-.btn--gold:hover {
+.btn__gold:hover {
   color: #fff;
   background-color: #5a4c0b;
 }
-.btn--silver {
+.btn__silver {
   color: #fff;
   background-color: #a7afae;
 }
-.btn--silver:hover {
+.btn__silver:hover {
   color: #fff;
   background-color: #4c5251;
 }
-.btn--lightblue {
+.btn__lightblue {
   color: #fff;
   background-color: #11c3e2;
 }
-.btn--lightblue:hover {
+.btn__lightblue:hover {
   color: #fff;
   background-color: #075968;
 }
-.btn--middleblue {
+.btn__middleblue {
   color: #fff;
   background-color: #2083f5;
 }
-.btn--middleblue:hover {
+.btn__middleblue:hover {
   color: #fff;
   background-color: #0d3869;
 }
-.btn--nightblue {
+.btn__nightblue {
   color: #fff;
   background-color: #071561;
 }
-.btn--nightblue:hover {
+.btn__nightblue:hover {
   color: #fff;
   background-color: #112bbd;
 }
-.btn--girondinsblue {
+.btn__girondinsblue {
   color: #fff;
   background-color: #090f33;
 }
-.btn--girondinsblue:hover {
+.btn__girondinsblue:hover {
   color: #fff;
   background-color: #b60fb6;
 }
-.btn--girondinspink {
+.btn__girondinspink {
   color: #fff;
   background-color: #b60fb6;
 }
-.btn--girondinspink:hover {
+.btn__girondinspink:hover {
   color: #fff;
   background-color: #090f33;
 }
-.btn--colvert {
+.btn__colvert {
   color: #fff;
   background-color: #12b9a3;
 }
-.btn--colvert:hover {
+.btn__colvert:hover {
   color: #fff;
   background-color: #085e52;
+}
+.btn__form {
+  color: #ceb87a;
+  background-color: #48412b;
+}
+.btn__form:hover {
+  color: #48412b;
+  background-color: #ceb87a;
 }
 
 /* ============================= Bouton Burger =============================  */
@@ -8693,7 +8702,7 @@ html, body {
 }
 .hTop a {
   padding: 0.4rem 0.8rem;
-  background-color: #726c6f;
+  background-color: #2b4841;
   min-width: 20%;
   border-left: thin solid #1c2b3d;
   border-right: thin solid #1c2b3d;
@@ -8710,12 +8719,12 @@ html, body {
 
 .tblList {
   width: 100%;
-  border: thin solid #726c6f;
+  border: thin solid #2b4841;
   border-radius: 5px;
 }
 .tblList__header__row__box {
-  border: thin solid #726c6f;
-  background-color: white;
+  border: thin solid #2b4841;
+  background-color: #f1e7ea;
   padding: 0.5rem;
 }
 .tblList__header__row__box:first-child {
@@ -8725,10 +8734,10 @@ html, body {
   border-top-right-radius: 5px;
 }
 .tblList__content__row__box {
-  border: thin solid #726c6f;
-  background-color: #726c6f;
+  border: thin solid #2b4841;
+  background-color: #2b4841;
   padding: 0.5rem;
-  color: white;
+  color: #f1e7ea;
 }
 .tblList__content__row__box:first-child {
   border-top-left-radius: 5px;
@@ -8738,18 +8747,18 @@ html, body {
   text-align: center;
 }
 .tblList__content__row__box:last-child a {
-  color: #726c6f;
-  background-color: white;
+  color: #2b4841;
+  background-color: #f1e7ea;
   padding: 0.3rem 0.5rem;
   border-radius: 3px;
-  border: thin solid white;
+  border: thin solid #f1e7ea;
 }
 .tblList__content__row__box:last-child a:hover {
   cursor: pointer;
-  background-color: #726c6f;
-  color: white;
-  border: thin solid white;
-  box-shadow: 0 0 5px white;
+  background-color: #2b4841;
+  color: #f1e7ea;
+  border: thin solid #f1e7ea;
+  box-shadow: 0 0 5px #f1e7ea;
 }
 
 .mainSheetContainer {
@@ -8759,7 +8768,7 @@ html, body {
 }
 .mainSheetContainer h1 {
   color: #fff;
-  background-color: #6c6f72;
+  background-color: #ceb87a;
   padding: 0.5rem;
 }
 .mainSheetContainer__child {
@@ -8770,7 +8779,7 @@ html, body {
 .mainSheetContainer__child__articleContainer {
   display: flex;
   gap: 1rem;
-  background-color: #3d2e1c;
+  background-color: #e3d4c2;
 }
 .mainSheetContainer__child__articleContainer__imgC {
   display: flex;
@@ -8789,24 +8798,24 @@ html, body {
   display: flex;
   flex-direction: column;
   padding: 1.5rem;
-  background-color: #6c6f72;
+  background-color: #ceb87a;
 }
 .mainSheetContainer__btns {
   gap: 1rem;
 }
 .mainSheetContainer__btns a {
-  color: #726c6f;
-  background-color: white;
+  color: #2b4841;
+  background-color: #f1e7ea;
   padding: 0.3rem 0.5rem;
   border-radius: 3px;
-  border: thin solid white;
+  border: thin solid #f1e7ea;
 }
 .mainSheetContainer__btns a:hover {
   cursor: pointer;
-  background-color: #726c6f;
-  color: white;
-  border: thin solid white;
-  box-shadow: 0 0 5px white;
+  background-color: #2b4841;
+  color: #f1e7ea;
+  border: thin solid #f1e7ea;
+  box-shadow: 0 0 5px #f1e7ea;
 }
 
 .formBlocksContainer {

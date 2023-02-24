@@ -32,19 +32,19 @@ $primaryClr : #1c2b3d;
 $primaryClrHvr : lighten($primaryClr, 20%);
 $primaryClrActive :darken($primaryClr, 20%) ;
 
-$secondaryClr : color.invert($primaryClr,40%);
+$secondaryClr : #ceb87a;
 $secondaryClrHvr : lighten($secondaryClr, 20%);
 $secondaryClrActive :darken($secondaryClr, 20%) ;
 
-$thirdClr : color.complement($primaryClr);
+$thirdClr : color.invert($primaryClr);
 $thirdClrHvr : lighten($thirdClr, 20%);
 $thirdClrActive :darken($thirdClr, 20%) ;
 
-$fourthClr : adjust-hue($primaryClr,170deg);;
+$fourthClr : #48412b;
 $fourthClrHvr : lighten($fourthClr, 20%);
 $fourthClrActive :darken($fourthClr, 20%) ;
 
-$fifthClr : adjust-hue($secondaryClr,120deg);;
+$fifthClr : adjust-hue($fourthClr,120deg);;
 $fifthClrHvr : lighten($fifthClr, 20%);
 $fifthClrActive :darken($fifthClr, 20%) ;
 

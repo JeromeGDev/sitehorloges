@@ -88,16 +88,19 @@
         // // REQUÊTE EXECUTION CARACTÉRISTIQUES
         // $requestFeatureLink->execute([$productId,$productFeatures]);
 
-        $stmt4=$mysqli->prepare("INSERT INTO products_features(feature_id,product_id,feature_id)
+        $stmt4=$bdd->prepare("INSERT INTO products_features(feature_id,product_id,feature_id)
                                     SELECT p.id, f.id
                                     FROM products AS p
                                     CROSS JOIN features AS f
                                     WHERE p.product_feature_id = ?
                                     AND f.feature_label = ?");
+
         $stmt4->bind_param("s",$name, $_POST['feature_label']);
+
         foreach ($_POST['products'] as $name) {
             $stmt4->execute();
         }
+
     }
 ?>
 <?php require_once 'elements/header.php'; ?>

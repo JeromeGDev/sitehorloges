@@ -3,8 +3,8 @@
 	include_once __DIR__. DIRECTORY_SEPARATOR .'functions'. DIRECTORY_SEPARATOR .'functions.php';
 
     //REQUETE SELECT POUR REMPLISSAGE AUTO
-    $productId = htmlspecialchars($_GET['productId']);
-    $userIdAuth = htmlspecialchars($_GET['userIdAuth']);
+    $productId = isset($_GET['productId']) ? htmlspecialchars($_GET['productId']) : '';
+    $userIdAuth = isset($_GET['userIdAuth']) ? htmlspecialchars($_GET['userIdAuth']) : '';
 
     // Vérification de l'utilisateur autorisé
     $requestAllowedUser = $bdd->prepare('SELECT * FROM products WHERE id = ?');

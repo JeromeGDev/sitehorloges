@@ -10,7 +10,9 @@
     $requestCat = $bdd->query('SELECT * FROM category');
     $categories = $requestCat->fetchAll();
 
-    $requestFeat = $bdd->query('SELECT * FROM features');
+    $requestFeat = $bdd->query('SELECT *
+                                FROM features
+    ');
     $features = $requestFeat->fetchAll();
 
     if(
@@ -35,6 +37,7 @@
         $productDesc = htmlspecialchars($_POST['productDesc']);
         // Traitement checkbox
         $productFeatures = $_POST['productFeatures'];
+        //dd($productFeatures);
         // automatique
         $productDateCreate = date('Y-m-d H:i:s');
         $productDateUpdate = date('Y-m-d H:i:s');
@@ -55,23 +58,15 @@
             } else {
                 $uniquePhotoName = $productPhoto;
             }
-            // var_dump($absPath);
-            // var_dump($userPhoto);
-            // var_dump($imageTmp);
-            // var_dump($infoImage);
-            // var_dump($extImage);
-            // var_dump($imageName);
-            // var_dump($uniquePhotoName);
-            // exit();
             move_uploaded_file($imageTmp, $absPath . $uniquePhotoName);
         }
         
         // REQUÊTE INSERTION PRODUITS
-        $requestProduct = $bdd->prepare("INSERT INTO products(product_name, product_period, product_brand, product_model, product_style, product_description, product_history, product_photo, product_date_create, product_date_update, product_matiere_id, category_id, /* product_feature_id, */ user_id )
-                                        VALUES ( ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , /* ? , */ ?)
+        $requestProduct = $bdd->prepare("INSERT INTO products(product_name, product_period, product_brand, product_model, product_style, product_description, product_history, product_photo, product_date_create, product_date_update, product_matiere_id, category_id,user_id )
+                                        VALUES ( ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ?)
         ");
         // REQUÊTE EXECUTION DE L'INSERTION DES PRODUITS
-        $requestProduct -> execute([$productName,$productPeriod,$productBrand,$productModel,$productStyle,$productDesc,$productHistory,$uniquePhotoName,$productDateCreate,$productDateUpdate,$productMatiere,$productCategory/* ,$productFeatures */,$userId]);
+        $requestProduct -> execute([$productName,$productPeriod,$productBrand,$productModel,$productStyle,$productDesc,$productHistory,$uniquePhotoName,$productDateCreate,$productDateUpdate,$productMatiere,$productCategory,$userId]);
 
         // Récupération de l'id du produit inséré
         $last_insert_id = $bdd->lastInsertId();
@@ -79,13 +74,14 @@
         //dd($last_insert_id);
 
         // REQUÊTE INSERTION CARACTÉRISTIQUES
-        $requestFeatureLink = $bdd->prepare('INSERT INTO products_features(product_id,feature_id)
-                                            VALUES (? , ?)
+        $requestFeature = $bdd->prepare('INSERT INTO products_features(product_id,feature_id)
+                                        VALUES (? , ?)
         ');
-        // // REQUÊTE EXECUTION CARACTÉRISTIQUES
+        // REQUÊTE EXECUTION CARACTÉRISTIQUES
         foreach($productFeatures as $productFeature){
-            $requestFeatureLink->execute([$last_insert_id,htmlspecialchars($productFeature)]);
-        }  
+            //var_dump($productFeature);
+            $requestFeature->execute([$last_insert_id,$productFeature]);
+        }//exit();  
 
     }
 ?>
@@ -162,7 +158,7 @@
                     <?php foreach ($features as $feature) : ?>
                     <label for="productFeatures">"<?= $feature['feature_label'] ;?>"</label>
                     <?php //var_dump($feature) ;?>
-                        <input type="checkbox" name="productFeatures[]" id="productFeatures" value="<?= $feature['feature_label'] ;?>">
+                        <input type="checkbox" name="productFeatures[]" id="productFeatures" value="<?= $feature['id'] ;?>" placeholder="<?= $feature['feature_label'] ;?>">
                     <?php endforeach ;?>
                 </div>
             </div>

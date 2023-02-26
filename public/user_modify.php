@@ -19,7 +19,7 @@
     //FOREACH PERMET DE BOUCLER SUR LE TABLEAU VALUES
     foreach ($values as $value) {
         //ON VERIFIE SI LE USER EST LE CREATEUR OU L'ADMIN
-        if(isset($sessionUserRole) && ($sessionUserRole === 'superadmin')) {
+        if(isset($sessionUserRole) && (($sessionUserRole === 'superadmin') || ($sessionUserRole === 'admin'))) {
             if (isset($_POST['userLastName']) ||
              isset($_POST['userFirstName']) || 
              isset($_POST['userPseudo']) ||

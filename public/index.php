@@ -20,7 +20,7 @@
 	<div class="containerBlocks">
 		<h2><?= $products['product_name'] ?></h2>
 		<div class="containerBlocks__imgBlock">
-			<img src="<?= $products['product_photo'] ?>" alt="Fiche produit de <?= $products['product_name'] ?>">
+			<img src="/public/assets/img/productimg/<?= $products['product_photo'] ;?>" alt="Photo de <?= $products['product_name'] ;?>">
 		</div>
 		<div class="containerBlocks__blockText">
 			<h3><?= $products['product_brand'] ?></h3>
